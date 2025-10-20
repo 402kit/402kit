@@ -1,0 +1,7 @@
+{
+  "buildCommand": "cd examples/browser && pnpm install && pnpm build",
+  "outputDirectory": "examples/browser/dist",
+  "installCommand": "pnpm install",
+  "framework": null,
+  "devCommand": "cd examples/browser && pnpm dev"
+}

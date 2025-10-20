@@ -48,6 +48,9 @@ out/
 # Vite
 .vite/
 
+# Vercel
+.vercel/
+
 # Changesets
 .changeset/*.md
 !.changeset/README.md

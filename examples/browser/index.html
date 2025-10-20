@@ -3,75 +3,193 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>402Kit Browser Example</title>
+    <title>402Kit - HTTP 402 Payment Required Demo</title>
+    <meta name="description" content="Interactive demo of 402Kit - x402-compatible SDK for HTTP 402 Payment Required" />
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
       body {
-        font-family: system-ui, -apple-system, sans-serif;
-        max-width: 800px;
-        margin: 2rem auto;
-        padding: 0 1rem;
-        line-height: 1.6;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 2rem 1rem;
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        overflow: hidden;
+      }
+      .header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 3rem 2rem;
+        text-align: center;
+      }
+      .header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .header p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+      }
+      .content {
+        padding: 2rem;
+      }
+      .info-box {
+        background: #f0f7ff;
+        border-left: 4px solid #667eea;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        border-radius: 4px;
+      }
+      .info-box h3 {
+        color: #667eea;
+        margin-bottom: 0.5rem;
+      }
+      .demo-section {
+        margin-bottom: 2rem;
+      }
+      .demo-section h2 {
+        color: #333;
+        margin-bottom: 1rem;
+      }
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: #555;
+      }
+      select {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        margin-bottom: 1rem;
+        transition: border-color 0.2s;
+      }
+      select:focus {
+        outline: none;
+        border-color: #667eea;
       }
       button {
-        background: #0070f3;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
         border: none;
-        padding: 0.75rem 1.5rem;
-        border-radius: 4px;
+        padding: 1rem 2rem;
+        border-radius: 6px;
         cursor: pointer;
-        font-size: 1rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        transition: transform 0.2s, box-shadow 0.2s;
+        width: 100%;
       }
-      button:hover {
-        background: #0051cc;
+      button:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
       }
       button:disabled {
         background: #ccc;
         cursor: not-allowed;
       }
-      pre {
-        background: #f5f5f5;
-        padding: 1rem;
-        border-radius: 4px;
-        overflow-x: auto;
-      }
       .log {
-        margin-top: 1rem;
-        padding: 1rem;
-        background: #fafafa;
-        border-left: 3px solid #0070f3;
-        border-radius: 4px;
+        margin-top: 2rem;
+        padding: 1.5rem;
+        background: #1e1e1e;
+        border-radius: 6px;
+        color: #d4d4d4;
+      }
+      .log h3 {
+        color: #fff;
+        margin-bottom: 1rem;
+      }
+      .log pre {
+        background: transparent;
+        padding: 0;
+        overflow-x: auto;
+        font-family: 'Monaco', 'Courier New', monospace;
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+      .footer {
+        text-align: center;
+        padding: 2rem;
+        background: #f8f9fa;
+        border-top: 1px solid #e9ecef;
+      }
+      .footer a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .footer a:hover {
+        text-decoration: underline;
+      }
+      .badge {
+        display: inline-block;
+        background: rgba(255,255,255,0.2);
+        padding: 0.25rem 0.75rem;
+        border-radius: 12px;
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
       }
     </style>
   </head>
   <body>
-    <h1>402Kit Browser Example</h1>
-    <p>
-      This example demonstrates the 402Kit client with automatic payment
-      handling.
-    </p>
+    <div class="container">
+      <div class="header">
+        <h1>🎮 402Kit Demo</h1>
+        <p>Interactive HTTP 402 Payment Required Flow</p>
+        <span class="badge">x402.v1 Compatible</span>
+      </div>
 
-    <h2>Test Protected Endpoint</h2>
-    <p>
-      Choose an endpoint to test. The client will automatically handle the 402
-      response and retry with payment.
-    </p>
+      <div class="content">
+        <div class="info-box">
+          <h3>💡 How it works</h3>
+          <p>
+            This demo shows how 402Kit automatically handles HTTP 402 responses.
+            When you request a protected resource, the server returns a payment challenge.
+            The client automatically "pays" (using a mock adapter) and retries the request.
+            <strong>No real money involved - this is a demo!</strong>
+          </p>
+        </div>
 
-    <div style="margin-bottom: 1rem;">
-      <label for="endpoint" style="display: block; margin-bottom: 0.5rem; font-weight: bold;">
-        Select Endpoint:
-      </label>
-      <select id="endpoint" style="padding: 0.5rem; font-size: 1rem; width: 100%; max-width: 400px;">
-        <option value="http://localhost:3000/api/protected">Protected Resource</option>
-        <option value="http://localhost:3000/api/article/123">Article 123</option>
-        <option value="http://localhost:3000/api/article/456">Article 456</option>
-      </select>
-    </div>
+        <div class="demo-section">
+          <h2>🚀 Try it yourself</h2>
+          <label for="endpoint">Select a protected resource:</label>
+          <select id="endpoint">
+            <option value="mock://protected">🔒 Protected Resource ($0.01)</option>
+            <option value="mock://article/123">📄 Article #123 ($0.005)</option>
+            <option value="mock://article/456">📄 Article #456 ($0.025)</option>
+            <option value="mock://premium">⭐ Premium Content ($0.10)</option>
+          </select>
 
-    <button id="fetchBtn">Fetch Protected Resource</button>
+          <button id="fetchBtn">Fetch Resource with Auto-Payment</button>
+        </div>
 
-    <div id="log" class="log" style="display: none">
-      <h3>Log:</h3>
-      <pre id="logContent"></pre>
+        <div id="log" class="log" style="display: none">
+          <h3>📋 Request Log</h3>
+          <pre id="logContent"></pre>
+        </div>
+      </div>
+
+      <div class="footer">
+        <p>
+          <strong>402Kit</strong> - Open source SDK for HTTP 402 Payment Required
+        </p>
+        <p style="margin-top: 0.5rem;">
+          <a href="https://github.com/402kit/402kit" target="_blank">GitHub</a> •
+          <a href="https://github.com/402kit/402kit#quick-start" target="_blank">Documentation</a> •
+          <a href="https://github.com/402kit/402kit/blob/main/LICENSE" target="_blank">Apache-2.0 License</a>
+        </p>
+      </div>
     </div>
 
     <script type="module" src="/src/main.ts"></script>

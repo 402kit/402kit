@@ -9,7 +9,7 @@
 
 > ⚡ **Monetize your APIs with HTTP 402 Payment Required** — Open source, protocol-first, production-ready.
 
-[🚀 Quick Start](#quick-start) • [📖 Documentation](docs/GETTING_STARTED.md) • [� Security](#security) • [🤝 Sponsor](#-sponsor-this-project)
+[🎮 **Try Live Demo**](https://402kit.dev) • [🚀 Quick Start](#quick-start) • [📖 Documentation](docs/GETTING_STARTED.md) • [🛡️ Security](#security) • [🤝 Sponsor](#-sponsor-this-project)
 
 ---
 
@@ -124,9 +124,10 @@ Use the entitlement helper to grant short-lived access for the same resource (co
 
 ## Examples
 
+- **[Browser Demo](https://402kit.dev)** 🎮 - **Live interactive demo** - Try the payment flow in your browser!
 - **[Express](./examples/express)** - Express.js server
 - **[Next.js](./examples/next)** - Next.js App Router
-- **[Browser](./examples/browser)** - Browser client demo
+- **[Browser Source](./examples/browser)** - Browser client demo source code
 
 ## Development
 
@@ -190,9 +191,11 @@ Need custom features, support, or consulting? Check out [MONETIZATION.md](./MONE
 
 **[Contact us for enterprise →](#)** enterprise@402kit.dev
 
+---
+
 ## Governance
 
-See [GOVERNANCE.md](./GOVERNANCE.md) for project governance model.
+See [docs/GOVERNANCE.md](docs/GOVERNANCE.md) for project governance model.
 
 ## Security
 
@@ -225,8 +228,8 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
 ## Support
 
-See [SUPPORT.md](./SUPPORT.md) for support options.
+See [.github/SUPPORT.md](.github/SUPPORT.md) for support options.
 
 ## Roadmap
 
-See [ROADMAP.md](./ROADMAP.md) for planned features and milestones.
+See [docs/ROADMAP.md](docs/ROADMAP.md) for planned features and milestones.
