@@ -146,7 +146,7 @@ Node.js and browsers.
 - ⚡ Protocol-first (x402.v1 compatible)
 - 🔌 Pluggable adapters
 - 🚀 Production-ready
-- 📦 6 packages, MIT licensed
+- 📦 6 packages, Apache-2.0 licensed
 - ✅ 16 passing tests
 
 ## Get Started
@@ -179,9 +179,9 @@ An open-source SDK for HTTP 402 "Payment Required" - monetize any API with crypt
 ✅ TypeScript
 ✅ Works with Express/Next.js
 ✅ Browser + Node.js
-✅ MIT licensed
+✅ Apache-2.0 licensed
 
-Check it out: https://github.com/YOUR_USERNAME/402kit
+Check it out: https://github.com/402kit/402kit
 
 #web3 #ethereum #opensource
 ```

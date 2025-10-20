@@ -2,7 +2,7 @@
 
 ## Open Source Core + Premium Services Model
 
-402Kit follows an **open-core** model: the SDK is free and open-source (MIT licensed), while premium services and enterprise features provide revenue opportunities.
+402Kit follows an **open-core** model: the SDK is free and open-source (Apache-2.0 licensed), while premium services and enterprise features provide revenue opportunities.
 
 ---
 
@@ -209,7 +209,7 @@
 
 Even with premium services, the community gets:
 
-- ✅ Full open-source SDK (MIT license)
+- ✅ Full open-source SDK (Apache-2.0 license)
 - ✅ Complete documentation
 - ✅ Community support (Discord/GitHub)
 - ✅ Regular updates and security patches

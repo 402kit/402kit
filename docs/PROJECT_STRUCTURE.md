@@ -67,7 +67,7 @@
 ├── CODE_OF_PRACTICE.md      # Development practices
 ├── CONTRIBUTING.md          # Contribution guidelines
 ├── GOVERNANCE.md            # Project governance model
-├── LICENSE                  # MIT License
+├── LICENSE                  # Apache-2.0 License
 ├── MAINTAINERS.md           # Maintainer list
 ├── README.md                # Project overview
 ├── RELEASE.md               # Release process

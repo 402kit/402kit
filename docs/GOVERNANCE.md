@@ -52,7 +52,7 @@ For changes to the x402 protocol or core APIs:
 
 ## Contributions
 
-- **Inbound = Outbound**: Contributions licensed under project license (MIT)
+- **Inbound = Outbound**: Contributions licensed under project license (Apache-2.0)
 - **CLA**: Optional Contributor License Agreement for larger contributions
 - See [CLA.md](./CLA.md) and [CONTRIBUTING.md](./CONTRIBUTING.md)
 
