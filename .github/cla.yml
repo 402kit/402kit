@@ -1,0 +1,8 @@
+check:
+  enabled: true
+  allowlist:
+    users: []
+    orgs: []
+  text: |
+    I have read and agree to the Contributor License Agreement (CLA.md).
+    By commenting "I AGREE" you accept the CLA for this PR and future contributions.

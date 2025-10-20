@@ -1,0 +1,38 @@
+{
+  "name": "@402kit/adapter-mock",
+  "version": "0.1.0",
+  "description": "Mock payment adapter for 402Kit (testing)",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "keywords": [
+    "http",
+    "402",
+    "payment",
+    "mock"
+  ],
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@402kit/core": "workspace:*"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.2",
+    "typescript": "^5.3.3",
+    "vitest": "^1.3.1"
+  }
+}

@@ -1,0 +1,7 @@
+- @founder-username
+  /packages/core/ @founder-username
+  /packages/client/ @founder-username
+  /packages/server/ @founder-username
+  /.github/ @founder-username
+  /GOVERNANCE.md @founder-username
+  /SECURITY.md @founder-username

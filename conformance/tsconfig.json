@@ -1,0 +1,17 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@402kit/core": ["../packages/core/src/index.ts"],
+      "@402kit/client": ["../packages/client/src/index.ts"],
+      "@402kit/server": ["../packages/server/src/index.ts"],
+      "@402kit/entitlement": ["../packages/entitlement/src/index.ts"],
+      "@402kit/adapter-mock": ["../packages/adapter-mock/src/index.ts"],
+      "@402kit/adapter-x402": ["../packages/adapter-x402/src/index.ts"]
+    }
+  },
+  "include": ["scenarios/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

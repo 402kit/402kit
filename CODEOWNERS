@@ -1,0 +1,4 @@
+* @402kit
+/packages/* @402kit
+/examples/* @402kit
+/.github/* @402kit

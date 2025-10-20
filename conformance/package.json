@@ -1,0 +1,25 @@
+{
+  "name": "conformance",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "Apache-2.0",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:scenario": "vitest run --testNamePattern",
+    "test:interop": "X402_INTEROP=true vitest run"
+  },
+  "dependencies": {
+    "@402kit/core": "workspace:*",
+    "@402kit/client": "workspace:*",
+    "@402kit/server": "workspace:*",
+    "@402kit/adapter-mock": "workspace:*",
+    "@402kit/adapter-x402": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "typescript": "^5.3.3",
+    "vitest": "^1.3.1"
+  }
+}
