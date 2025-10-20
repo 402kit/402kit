@@ -158,7 +158,7 @@ const client = createClient({
     log('');
     return payment;
   },
-  onPaymentRequired: (challenge) => {
+  onPaymentRequired: (_challenge) => {
     log('⚠️  Payment Required!');
   },
   onVerified: (response) => {

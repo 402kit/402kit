@@ -1,7 +1,6 @@
 {
-  "buildCommand": "cd examples/browser && pnpm install && pnpm build",
+  "buildCommand": "pnpm install && pnpm -r --filter @402kit/core build && pnpm -r --filter @402kit/client build && pnpm -r --filter @402kit/adapter-mock build && cd examples/browser && pnpm build",
   "outputDirectory": "examples/browser/dist",
-  "installCommand": "pnpm install",
-  "framework": null,
-  "devCommand": "cd examples/browser && pnpm dev"
+  "installCommand": "pnpm install --no-frozen-lockfile",
+  "framework": null
 }
