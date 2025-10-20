@@ -16,8 +16,8 @@ jobs:
       - run: corepack enable
       - run: pnpm i --frozen-lockfile
       - run: pnpm -w build
-      - name: Publish to npm (dry-run if NPM_TOKEN missing)
-        if: ${{ secrets.NPM_TOKEN != '' }}
+      - name: Publish to npm
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: pnpm -r publish --access public
+        run: pnpm -r publish --access public --no-git-checks
