@@ -1,6 +1,6 @@
 {
   "name": "@402kit/server",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Server middleware for 402Kit (Express, Next.js, Hono)",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -58,8 +58,8 @@
   ],
   "license": "Apache-2.0",
   "dependencies": {
-    "@402kit/core": "workspace:*",
-    "@402kit/entitlement": "workspace:*"
+    "@402kit/core": "^0.1.1",
+    "@402kit/entitlement": "^0.1.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",

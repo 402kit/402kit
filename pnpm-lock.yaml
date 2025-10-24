@@ -123,7 +123,7 @@ importers:
   packages/adapter-mock:
     dependencies:
       '@402kit/core':
-        specifier: workspace:*
+        specifier: ^0.1.1
         version: link:../core
     devDependencies:
       tsup:
@@ -139,7 +139,7 @@ importers:
   packages/adapter-x402:
     dependencies:
       '@402kit/core':
-        specifier: workspace:*
+        specifier: ^0.1.1
         version: link:../core
     devDependencies:
       tsup:
@@ -155,7 +155,7 @@ importers:
   packages/client:
     dependencies:
       '@402kit/core':
-        specifier: workspace:*
+        specifier: ^0.1.1
         version: link:../core
     devDependencies:
       tsup:
@@ -183,7 +183,7 @@ importers:
   packages/entitlement:
     dependencies:
       '@402kit/core':
-        specifier: workspace:*
+        specifier: ^0.1.1
         version: link:../core
     devDependencies:
       tsup:
@@ -199,10 +199,10 @@ importers:
   packages/server:
     dependencies:
       '@402kit/core':
-        specifier: workspace:*
+        specifier: ^0.1.1
         version: link:../core
       '@402kit/entitlement':
-        specifier: workspace:*
+        specifier: ^0.1.1
         version: link:../entitlement
       express:
         specifier: ^4.0.0

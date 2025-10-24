@@ -1,6 +1,6 @@
 {
   "name": "@402kit/client",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "HTTP client with automatic 402 payment handling",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -42,7 +42,7 @@
   ],
   "license": "Apache-2.0",
   "dependencies": {
-    "@402kit/core": "workspace:*"
+    "@402kit/core": "^0.1.1"
   },
   "devDependencies": {
     "tsup": "^8.5.0",

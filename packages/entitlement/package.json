@@ -1,6 +1,6 @@
 {
   "name": "@402kit/entitlement",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Session and entitlement helpers",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -42,7 +42,7 @@
   ],
   "license": "Apache-2.0",
   "dependencies": {
-    "@402kit/core": "workspace:*"
+    "@402kit/core": "^0.1.1"
   },
   "devDependencies": {
     "tsup": "^8.5.0",

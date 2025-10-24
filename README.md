@@ -2,9 +2,6 @@
 
 [![CI](https://github.com/402kit/402kit/workflows/ci/badge.svg)](https://github.com/402kit/402kit/actions)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-
-<!-- TODO: Update npm badge after first publish -->
-
 [![npm version](https://badge.fury.io/js/%40402kit%2Fcore.svg)](https://www.npmjs.com/package/@402kit/core)
 [![x402 Compatible](https://img.shields.io/badge/x402-compatible-green.svg)](https://github.com/protocols/x402)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
