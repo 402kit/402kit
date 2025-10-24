@@ -1,13 +1,11 @@
 # @402kit/adapter-mock
 
-Mock payment adapter for testing 402Kit integration without real payment processing.
+Mock x402 facilitator for local dev and tests. Simulate HTTP 402 payment flows without real transactions in the 402kit ecosystem.
 
 ## Installation
 
 ```bash
 npm install @402kit/adapter-mock
-# or
-pnpm add @402kit/adapter-mock
 ```
 
 ## Quick Start
@@ -15,32 +13,25 @@ pnpm add @402kit/adapter-mock
 ```typescript
 import { MockAdapter } from '@402kit/adapter-mock';
 
+// Mock x402 facilitator for testing HTTP 402 flows
 const adapter = new MockAdapter();
 
-// Generate a payment challenge
-const challenge = await adapter.createChallenge({
-  resource: '/api/premium',
-  priceUsd: 0.01,
+// Use with 402kit client/server
+const client = createClient({
+  adapters: { mock: adapter },
+  resolvePayment: async (challenge, ctx) => {
+    return await ctx.getAdapter('mock').initiate(challenge, ctx);
+  },
 });
-
-// Simulate payment (auto-succeeds)
-const receipt = await adapter.pay(challenge);
 ```
 
 ## Features
 
-- Instant payment simulation
-- No external dependencies
-- Perfect for testing and development
-- Implements full PaymentAdapter interface
-
-## Documentation
-
-For complete documentation, examples, and guides, visit:
-
-- [Main Documentation](https://github.com/402kit/402kit#readme)
-- [Adapter Guide](https://github.com/402kit/402kit/tree/main/docs)
+- Mock x402 facilitator implementation
+- HTTP 402 testing without real payments
+- 402kit ecosystem integration
+- Development and testing support
 
 ## License
 
-Apache-2.0 - see [LICENSE](./LICENSE) for details.
+Apache-2.0

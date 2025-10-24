@@ -1,29 +1,30 @@
 # @402kit/core
 
-Core types, schemas, and validation for the 402Kit payment protocol implementation.
+Core SDK for HTTP 402 (x402) payments and entitlements. Essential types, schemas, and utilities for building 402kit-powered applications with micropayment support.
 
 ## Installation
 
 ```bash
 npm install @402kit/core
-# or
-pnpm add @402kit/core
 ```
 
 ## Features
 
-- TypeScript types for HTTP 402 Payment Required protocol
-- Zod schemas for payment challenge/receipt validation
-- x402.v1 protocol support
+- HTTP 402 Payment Required protocol support
+- x402 facilitator protocol implementation
+- TypeScript types and Zod validation schemas
+- 402kit ecosystem foundation
 - Zero runtime dependencies
 
-## Documentation
+## Quick Start
 
-For complete documentation, examples, and guides, visit:
+```typescript
+import { validateChallenge, encodeChallengeBody } from '@402kit/core';
 
-- [Main Documentation](https://github.com/402kit/402kit#readme)
-- [API Reference](https://github.com/402kit/402kit/tree/main/docs)
+// Validate HTTP 402 payment challenges
+const isValid = validateChallenge(challenge);
+```
 
 ## License
 
-Apache-2.0 - see [LICENSE](./LICENSE) for details.
+Apache-2.0

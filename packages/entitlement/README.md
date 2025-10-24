@@ -1,45 +1,35 @@
 # @402kit/entitlement
 
-Session and entitlement management helpers for 402Kit payment flows.
+Entitlement helpers for granting/checking paid access. Session management for HTTP 402 and x402 protocol implementations in the 402kit ecosystem.
 
 ## Installation
 
 ```bash
 npm install @402kit/entitlement
-# or
-pnpm add @402kit/entitlement
 ```
 
 ## Quick Start
 
 ```typescript
-import { SessionEntitlements } from '@402kit/entitlement';
+import { entitlement } from '@402kit/entitlement';
 
-const entitlements = new SessionEntitlements();
+// Cookie-based entitlements for HTTP 402 flows
+const cookieEnt = entitlement.cookie({ ttlSeconds: 3600 });
 
-// Grant entitlement after payment
-entitlements.grant(sessionId, resourcePath);
+// Grant access after x402 payment
+await cookieEnt.grant('urn:resource:123');
 
-// Check entitlement
-if (entitlements.hasEntitlement(sessionId, resourcePath)) {
-  // Allow access
-}
+// Check entitlement in 402kit middleware
+const hasAccess = await cookieEnt.check(cookieHeader, resource);
 ```
 
 ## Features
 
-- In-memory session tracking
-- Resource-level entitlements
-- Simple grant/revoke API
-- TypeScript support
-
-## Documentation
-
-For complete documentation, examples, and guides, visit:
-
-- [Main Documentation](https://github.com/402kit/402kit#readme)
-- [Entitlement Guide](https://github.com/402kit/402kit/tree/main/docs)
+- HTTP 402 session management
+- Cookie and bearer token entitlements
+- 402kit middleware integration
+- x402 protocol support
 
 ## License
 
-Apache-2.0 - see [LICENSE](./LICENSE) for details.
+Apache-2.0

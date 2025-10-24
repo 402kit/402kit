@@ -1,7 +1,7 @@
 {
   "name": "@402kit/entitlement",
-  "version": "0.1.1",
-  "description": "Session and entitlement helpers",
+  "version": "0.1.2",
+  "description": "Entitlement helpers for granting/checking paid access",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -13,17 +13,24 @@
       "require": "./dist/index.cjs"
     }
   },
+  "sideEffects": false,
   "files": [
     "dist",
     "README.md",
     "LICENSE"
   ],
+  "author": "402Kit Authors",
+  "homepage": "https://github.com/402kit/402kit#readme",
+  "bugs": {
+    "url": "https://github.com/402kit/402kit/issues"
+  },
   "engines": {
     "node": ">=18"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/402kit/402kit.git"
+    "url": "git+https://github.com/402kit/402kit.git",
+    "directory": "packages/entitlement"
   },
   "publishConfig": {
     "access": "public"
@@ -35,14 +42,15 @@
     "prepack": "pnpm build"
   },
   "keywords": [
-    "http",
-    "402",
-    "payment",
-    "session"
+    "402kit",
+    "entitlements",
+    "access control",
+    "http 402",
+    "x402"
   ],
   "license": "Apache-2.0",
   "dependencies": {
-    "@402kit/core": "^0.1.1"
+    "@402kit/core": "^0.1.2"
   },
   "devDependencies": {
     "tsup": "^8.5.0",

@@ -1,7 +1,7 @@
 {
   "name": "@402kit/client",
-  "version": "0.1.1",
-  "description": "HTTP client with automatic 402 payment handling",
+  "version": "0.1.2",
+  "description": "Client utilities to handle HTTP 402/x402 retries (X-PAYMENT)",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -13,17 +13,24 @@
       "require": "./dist/index.cjs"
     }
   },
+  "sideEffects": false,
   "files": [
     "dist",
     "README.md",
     "LICENSE"
   ],
+  "author": "402Kit Authors",
+  "homepage": "https://github.com/402kit/402kit#readme",
+  "bugs": {
+    "url": "https://github.com/402kit/402kit/issues"
+  },
   "engines": {
     "node": ">=18"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/402kit/402kit.git"
+    "url": "git+https://github.com/402kit/402kit.git",
+    "directory": "packages/client"
   },
   "publishConfig": {
     "access": "public"
@@ -35,14 +42,18 @@
     "prepack": "pnpm build"
   },
   "keywords": [
-    "http",
-    "402",
-    "payment",
-    "client"
+    "402kit",
+    "http 402",
+    "x402",
+    "client",
+    "fetch",
+    "retry",
+    "browser",
+    "node"
   ],
   "license": "Apache-2.0",
   "dependencies": {
-    "@402kit/core": "^0.1.1"
+    "@402kit/core": "^0.1.2"
   },
   "devDependencies": {
     "tsup": "^8.5.0",

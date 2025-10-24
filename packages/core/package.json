@@ -1,7 +1,7 @@
 {
   "name": "@402kit/core",
-  "version": "0.1.1",
-  "description": "Core types, schemas, and utilities for 402Kit",
+  "version": "0.1.2",
+  "description": "Core SDK for HTTP 402 (x402) payments and entitlements",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -13,6 +13,7 @@
       "require": "./dist/index.cjs"
     }
   },
+  "sideEffects": false,
   "files": [
     "dist",
     "README.md",
@@ -26,18 +27,27 @@
     "test:watch": "vitest"
   },
   "keywords": [
-    "http",
-    "402",
-    "payment",
-    "x402"
+    "402kit",
+    "http 402",
+    "x402",
+    "payments",
+    "micropayments",
+    "sdk",
+    "types"
   ],
+  "author": "402Kit Authors",
   "license": "Apache-2.0",
+  "homepage": "https://github.com/402kit/402kit#readme",
+  "bugs": {
+    "url": "https://github.com/402kit/402kit/issues"
+  },
   "engines": {
     "node": ">=18"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/402kit/402kit.git"
+    "url": "git+https://github.com/402kit/402kit.git",
+    "directory": "packages/core"
   },
   "publishConfig": {
     "access": "public"

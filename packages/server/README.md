@@ -1,82 +1,39 @@
 # @402kit/server
 
-Server middleware for Express, Next.js, and Hono to handle HTTP 402 payment protection.
+Server middleware for HTTP 402/x402 (Express/Next.js/Hono/edge). Protect API routes with micropayments using the 402kit ecosystem and x402 protocol.
 
 ## Installation
 
 ```bash
 npm install @402kit/server
-# or
-pnpm add @402kit/server
 ```
 
 ## Quick Start
 
-### Express
-
 ```typescript
-import express from 'express';
-import { expressPaymentMiddleware } from '@402kit/server/express';
+import { handle402 } from '@402kit/server';
 import { MockAdapter } from '@402kit/adapter-mock';
 
-const app = express();
-
-app.use(
-  '/api/premium',
-  expressPaymentMiddleware({
-    adapter: new MockAdapter(),
-    priceUsd: 0.01,
-  })
-);
-```
-
-### Next.js
-
-```typescript
-import { nextPaymentMiddleware } from '@402kit/server/next';
-
-export default nextPaymentMiddleware(
-  {
-    adapter: new MockAdapter(),
-    priceUsd: 0.01,
-  },
-  async (req, res) => {
-    res.json({ data: 'premium content' });
-  }
-);
-```
-
-### Hono
-
-```typescript
-import { Hono } from 'hono';
-import { honoPaymentMiddleware } from '@402kit/server/hono';
-
-const app = new Hono();
-
-app.use(
-  '/api/premium',
-  honoPaymentMiddleware({
-    adapter: new MockAdapter(),
-    priceUsd: 0.01,
-  })
-);
+// HTTP 402 payment protection middleware
+const config = {
+  price: async () => ({
+    scheme: 'exact',
+    network: 'evm:base:sepolia',
+    asset: '0x036CbD53842c5426634e7929541eC2318f3dCF7e',
+    maxAmountRequired: '1000',
+  }),
+  adapters: { mock: new MockAdapter() },
+  defaultAdapter: 'mock',
+};
 ```
 
 ## Features
 
-- Express, Next.js, and Hono support
-- Configurable pricing
-- Session-based entitlements
-- Payment adapter integration
-
-## Documentation
-
-For complete documentation, examples, and guides, visit:
-
-- [Main Documentation](https://github.com/402kit/402kit#readme)
-- [Server Guide](https://github.com/402kit/402kit/tree/main/docs)
+- HTTP 402 Payment Required middleware
+- x402 facilitator integration
+- Express/Next.js/Hono/edge runtime support
+- 402kit adapter ecosystem
 
 ## License
 
-Apache-2.0 - see [LICENSE](./LICENSE) for details.
+Apache-2.0
