@@ -10,7 +10,7 @@ jobs:
   build-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: actions/setup-node@v4
         with: { node-version: '20' }
       - run: corepack enable
@@ -23,7 +23,7 @@ jobs:
   license-scan:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: actions/setup-node@v4
         with: { node-version: '20' }
       - run: corepack enable
@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: true # Known dev-dep vulnerabilities (esbuild, hono) accepted for now
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: google/osv-scanner/actions/scanner@v1.9.0
         with:
           scan-args: '--lockfile=pnpm-lock.yaml'
@@ -44,7 +44,7 @@ jobs:
   conformance:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: actions/setup-node@v4
         with: { node-version: '20' }
       - run: corepack enable
@@ -55,7 +55,7 @@ jobs:
   sbom:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: anchore/sbom-action@v0.17.0
         with:
           format: spdx-json
