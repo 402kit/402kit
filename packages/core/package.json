@@ -1,6 +1,6 @@
 {
   "name": "@402kit/core",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Core SDK for HTTP 402 (x402) payments and entitlements",
   "type": "module",
   "main": "./dist/index.cjs",

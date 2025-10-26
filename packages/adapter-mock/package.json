@@ -1,6 +1,6 @@
 {
   "name": "@402kit/adapter-mock",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Mock x402 facilitator for local dev and tests",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -49,7 +49,7 @@
   ],
   "license": "Apache-2.0",
   "dependencies": {
-    "@402kit/core": "^0.1.2"
+    "@402kit/core": "^0.1.3"
   },
   "devDependencies": {
     "tsup": "^8.5.0",

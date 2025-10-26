@@ -19,21 +19,51 @@ The workflow will:
 
 ## Steps to Release
 
-### 1. Determine the Next Version
+### 1. Create a Changeset
 
-Follow [Semantic Versioning](https://semver.org/). Check the recent commits since the last tag to determine if the release should be a `major`, `minor`, or `patch` update.
-
-### 2. Create and Push a New Tag
-
-From your local, up-to-date `main` branch:
+Document what changed using the `changeset` tool:
 
 ```bash
-# Example for a patch release
-git tag v1.0.1
-git push origin v1.0.1
+pnpm changeset
 ```
 
-### 3. Monitor the Release Workflow
+Since we use **fixed versioning**, all `@402kit/*` packages will be released together at the same version, even if only one package changed.
+
+The changeset will be stored in `.changeset/` and committed to the repository.
+
+### 2. Version Packages
+
+When ready to release, apply the changesets and bump all package versions:
+
+```bash
+pnpm changeset version
+```
+
+This will:
+
+- Update all `@402kit/*` packages to the same new version
+- Update the `VERSION` constant in `packages/core/src/index.ts`
+- Generate/update `CHANGELOG.md` files for each package
+- Delete consumed changesets
+
+Review the changes and commit:
+
+```bash
+git add -A
+git commit -m "chore: release vX.Y.Z"
+```
+
+### 3. Create and Push a Tag
+
+Create a git tag matching the new version:
+
+```bash
+# Example for v0.1.3
+git tag v0.1.3
+git push origin main --tags
+```
+
+### 4. Monitor the Release Workflow
 
 Go to the "Actions" tab in the GitHub repository to monitor the progress of the "Release" workflow. If any step fails, the release will be aborted.
 
@@ -41,8 +71,8 @@ Go to the "Actions" tab in the GitHub repository to monitor the progress of the 
 
 Once the workflow completes successfully:
 
-- Check npm to ensure the new package versions are available.
-- Check the GitHub Releases page to see the new release and its changelog.
+- Check npm to ensure all `@402kit/*` packages are published at the same version
+- Verify npm provenance attestations are present
 
 ## Manual Publishing (Emergency Only)
 
@@ -55,4 +85,12 @@ If the automated release process fails and a release is urgently needed, maintai
 
 ## Versioning
 
-We use tag-driven releases, but individual package versions are managed by `pnpm`. For now, version bumps are done manually in each `package.json`. In the future, we may adopt a tool like `changesets` to automate this.
+We use **fixed/lockstep versioning** managed by [Changesets](https://github.com/changesets/changesets):
+
+- **All `@402kit/*` packages share the same version number**
+- Configured in `.changeset/config.json`: `"fixed": [["@402kit/*"]]`
+- When any package changes, all packages bump together
+- Simplifies dependency management and communication ("402kit v0.1.3")
+- Package-specific CHANGELOGs show what actually changed in each package
+
+Releases are tag-driven (`v*.*.*`), and the GitHub Actions workflow automatically publishes to npm with provenance attestations.
