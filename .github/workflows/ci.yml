@@ -56,7 +56,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: anchore/sbom-action@v0.17.0
+      - uses: anchore/sbom-action@v0.20.9
         with:
           format: spdx-json
           output-file: sbom.spdx.json
