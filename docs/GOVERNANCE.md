@@ -40,7 +40,7 @@
 For changes to the x402 protocol or core APIs:
 
 1. **Open an issue** for discussion
-2. **Create an RFC** in `RFCs/` directory
+2. **Create an RFC** in the `docs/rfc` directory
 3. **Community feedback** period (1-2 weeks)
 4. **BDFL final decision**
 
@@ -53,14 +53,12 @@ For changes to the x402 protocol or core APIs:
 ## Contributions
 
 - **Inbound = Outbound**: Contributions licensed under project license (Apache-2.0)
-- **CLA**: Optional Contributor License Agreement for larger contributions
-- See [CLA.md](./CLA.md) and [CONTRIBUTING.md](./CONTRIBUTING.md)
+- **CLA**: A Contributor License Agreement is required for all contributions. See [CLA.md](../CLA.md) and [CONTRIBUTING.md](../CONTRIBUTING.md) for details.
 
 ## Conflict Resolution
 
 - **Maintainer disagreement**: BDFL decides
-- **Code of Conduct violations**: See [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)
-- **Security issues**: See [SECURITY.md](./SECURITY.md)
+- **Security issues**: See [SECURITY.md](../SECURITY.md)
 
 ## Transparency
 

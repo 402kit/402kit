@@ -1,135 +1,58 @@
 # Release Process
 
-This document describes the release process for 402Kit.
+This document describes the release process for 402Kit, which is automated via GitHub Actions.
 
 ## Overview
 
-We use [Changesets](https://github.com/changesets/changesets) for version management and publishing.
+Releases are driven by git tags. Pushing a new tag matching the pattern `v*.*.*` (e.g., `v1.0.1`) will trigger the release workflow.
+
+The workflow will:
+
+1.  Build all packages.
+2.  Publish the updated packages to npm with provenance attestations.
+
+**Note**: The release workflow does NOT automatically run tests or create GitHub Releases. Ensure CI is green on `main` before tagging.
 
 ## Prerequisites
 
-- Maintainer access
-- NPM publishing rights
-- GitHub release permissions
+- You must be a maintainer with permission to push to the repository.
 
-## Steps
+## Steps to Release
 
-### 1. Create Changesets
+### 1. Determine the Next Version
 
-Contributors and maintainers create changesets for PRs:
+Follow [Semantic Versioning](https://semver.org/). Check the recent commits since the last tag to determine if the release should be a `major`, `minor`, or `patch` update.
 
-```bash
-pnpm changeset
-```
+### 2. Create and Push a New Tag
 
-Follow prompts to:
-- Select packages affected
-- Choose version bump (major, minor, patch)
-- Describe changes
-
-Commit the changeset file.
-
-### 2. Version Bump
-
-When ready to release:
+From your local, up-to-date `main` branch:
 
 ```bash
-pnpm version-packages
+# Example for a patch release
+git tag v1.0.1
+git push origin v1.0.1
 ```
 
-This:
-- Consumes all changesets
-- Updates package.json versions
-- Updates CHANGELOG.md
+### 3. Monitor the Release Workflow
 
-Review changes and commit:
+Go to the "Actions" tab in the GitHub repository to monitor the progress of the "Release" workflow. If any step fails, the release will be aborted.
 
-```bash
-git add .
-git commit -m "chore: version packages"
-git push
-```
+### 4. Verify the Release
 
-### 3. Build and Test
+Once the workflow completes successfully:
 
-```bash
-# Clean
-pnpm clean
+- Check npm to ensure the new package versions are available.
+- Check the GitHub Releases page to see the new release and its changelog.
 
-# Install fresh dependencies
-pnpm install
+## Manual Publishing (Emergency Only)
 
-# Build all packages
-pnpm build
+If the automated release process fails and a release is urgently needed, maintainers can publish manually. This should be avoided.
 
-# Run all tests
-pnpm test
-
-# Lint and typecheck
-pnpm lint
-pnpm typecheck
-```
-
-### 4. Publish to NPM
-
-```bash
-pnpm release
-```
-
-This publishes all updated packages to NPM.
-
-### 5. Create GitHub Release
-
-1. Go to https://github.com/402kit/402kit/releases/new
-2. Create new tag: `v0.x.x`
-3. Title: `v0.x.x`
-4. Copy relevant CHANGELOG entries to description
-5. Attach any release artifacts
-6. Publish release
-
-### 6. Announce
-
-- GitHub Discussions announcement
-- Update README if needed
-- Tweet/social media (optional)
-
-## Release Schedule
-
-- **Patch releases**: As needed for bug fixes
-- **Minor releases**: Every 2-4 weeks
-- **Major releases**: When breaking changes accumulate
-
-## Pre-releases
-
-For testing before stable release:
-
-```bash
-# Create pre-release version
-pnpm changeset version --snapshot alpha
-
-# Publish with tag
-pnpm publish -r --tag alpha
-```
+1.  Ensure your local `main` is clean and up-to-date.
+2.  Run `pnpm install` and `pnpm build`.
+3.  Log in to npm: `npm login`.
+4.  Publish each public package: `pnpm publish -r --access public`.
 
 ## Versioning
 
-We follow [Semantic Versioning](https://semver.org/):
-
-- **Major (1.0.0)**: Breaking changes
-- **Minor (0.1.0)**: New features, backward compatible
-- **Patch (0.0.1)**: Bug fixes
-
-## Rollback
-
-If a release has critical issues:
-
-```bash
-# Deprecate the broken version
-npm deprecate @402kit/package@x.x.x "Critical bug, use x.x.y"
-
-# Publish hotfix as new patch version
-```
-
-## Questions?
-
-Contact maintainers or open a Discussion.
+We use tag-driven releases, but individual package versions are managed by `pnpm`. For now, version bumps are done manually in each `package.json`. In the future, we may adopt a tool like `changesets` to automate this.

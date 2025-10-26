@@ -1,5 +1,12 @@
 # Getting Started with 402Kit
 
+This guide will walk you through setting up a basic 402Kit client and server.
+
+## Requirements
+
+- Node.js 20+ (for Web Crypto support)
+- pnpm
+
 ## Installation
 
 ```bash
@@ -23,7 +30,7 @@ app.get(
     price: async () => ({
       scheme: 'exact',
       network: 'evm:base:sepolia',
-      asset: '0x036CbD53842c5426634e7929541eC2318f3dCF7e', // USDC
+      asset: '0xUSDC_CONTRACT', // Example asset
       maxAmountRequired: '1000', // 0.001 USDC (6 decimals)
       description: 'Access to protected resource',
     }),
@@ -71,7 +78,7 @@ When a protected resource is accessed, the server responds with:
   "version": "x402.v1",
   "scheme": "exact",
   "network": "evm:base:sepolia",
-  "asset": "0x036CbD...",
+  "asset": "0xUSDC_CONTRACT",
   "maxAmountRequired": "1000",
   "challengeId": "uuid...",
   "bind": {
@@ -100,7 +107,7 @@ Adapters handle payment resolution and verification:
 
 ## Next Steps
 
-- See [Examples](./examples) for complete applications
-- Read [API Documentation](./docs) for detailed reference
-- Check [Security](./SECURITY.md) for best practices
-- Join [Discussions](https://github.com/402kit/402kit/discussions) for help
+- See [Examples](../examples) for complete applications
+- Read the full [Documentation](../docs) for detailed reference
+- Check [Security Best Practices](../SECURITY.md)
+- Join the [Discussions](https://github.com/402kit/402kit/discussions) for help

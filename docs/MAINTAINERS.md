@@ -6,15 +6,15 @@
 
 - **[Your Name]** (@username)
   - Role: Project founder, protocol design, final decisions
-  - Contact: email@example.com
+  - Contact: TBD
 
 ## Active Maintainers
 
-*To be determined as project grows*
+_To be determined as project grows._
 
 ## Emeritus Maintainers
 
-*Former maintainers who have stepped down*
+_Former maintainers who have stepped down._
 
 ## How to Become a Maintainer
 
@@ -26,26 +26,13 @@
 
 ## Maintainer Responsibilities
 
-- **Code review** within 7 days
-- **Issue triage** and labeling
-- **Community support** in discussions
-- **Documentation** updates
-- **Security** awareness and reporting
-- **Follow** Code of Conduct
-
-## Maintainer Authority
-
-- **Merge** approved pull requests
-- **Close** duplicate or invalid issues
-- **Label** and prioritize issues
-- **Release** packages (with approval)
-
-## Stepping Down
-
-Maintainers may step down at any time. Please notify the team via private communication.
+- **Code review** within a reasonable timeframe.
+- **Issue triage** and labeling.
+- **Community support** in discussions.
+- **Documentation** updates.
+- **Security** awareness and reporting.
 
 ## Contact
 
 - **GitHub**: @402kit
-- **Email**: maintainers@402kit.dev
 - **Discussions**: https://github.com/402kit/402kit/discussions

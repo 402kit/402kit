@@ -38,6 +38,10 @@ It lets any API say:
 
 ## Quick Start
 
+### Requirements
+
+Node.js 20+ (Web Crypto support)
+
 ### Install
 
 ```bash
@@ -77,7 +81,7 @@ app.get(
     price: async () => ({
       scheme: 'exact',
       network: 'evm:base:sepolia',
-      asset: '0xUSDC…',
+      asset: '0xUSDC_CONTRACT',
       maxAmountRequired: '1000',
       description: 'One-off access',
     }),
@@ -99,11 +103,7 @@ app.listen(3000);
 
 ## Security
 
-- **TLS only**
-- **Atomic units as strings** (no floats)
-- **Binding** to host/method/path (+ body hash if needed)
-- **Short TTL**, single-use `challengeId`, nonce, replay protection
-- **Strict error model**
+For the full threat model and policies, see [SECURITY.md](./SECURITY.md).
 
 ## Sessions (Optional)
 
@@ -125,8 +125,8 @@ Use the entitlement helper to grant short-lived access for the same resource (co
 ## Examples
 
 - **[Browser Demo](https://402kit.dev)** 🎮 - **Live interactive demo** - Try the payment flow in your browser!
-- **[Express](./examples/express)** - Express.js server
-- **[Next.js](./examples/next)** - Next.js App Router
+- **[Express](./examples/express)** - Express.js server example
+- **[Next.js](./examples/next)** - Next.js App Router example
 - **[Browser Source](./examples/browser)** - Browser client demo source code
 
 ## Development
@@ -141,12 +141,40 @@ pnpm build
 # Run tests
 pnpm test
 
-# Lint
+# Lint and format
 pnpm lint
-
-# Format
 pnpm format
 ```
+
+### Running Examples Locally
+
+After building packages, run any example:
+
+```bash
+cd examples/next
+pnpm dev              # Next.js on http://localhost:3000
+
+cd examples/express
+pnpm dev              # Express on http://localhost:3001
+
+cd examples/browser
+pnpm dev              # Vite dev server
+```
+
+**Note**: Examples use `workspace:*` to consume local packages. Rebuild packages after making changes.
+
+## 🏢 Enterprise
+
+Need custom features, support, or consulting? Check out [docs/MONETIZATION.md](docs/MONETIZATION.md) for:
+
+- 🔥 Hosted facilitator service (turnkey payment infrastructure)
+- ⚡ Premium adapters for production
+- 🎯 Enterprise support contracts
+- 🛠️ Custom development and consulting
+
+**[Contact us for enterprise →](mailto:enterprise@402kit.dev)**
+
+---
 
 ## Contributing
 
@@ -156,23 +184,9 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
 402Kit is **free and open source** (Apache-2.0 licensed). If you're using it in production or find it valuable, please consider sponsoring to support continued development!
 
-### Why Sponsor?
+For details on sponsorship tiers and benefits, see [docs/MONETIZATION.md](docs/MONETIZATION.md).
 
-- ✅ Ensures long-term maintenance and security updates
-- ✅ Funds new features and improvements
-- ✅ Supports the open-source ecosystem
-- ✅ Get your logo on our README (Gold+ sponsors)
-
-### Sponsorship Tiers
-
-| Tier            | Amount/Month | Benefits                         |
-| --------------- | ------------ | -------------------------------- |
-| 🥉 **Bronze**   | $100         | Listed as sponsor                |
-| 🥈 **Silver**   | $500         | Logo in README + priority issues |
-| 🥇 **Gold**     | $2,000       | Above + roadmap input            |
-| 💎 **Platinum** | $5,000       | Above + quarterly strategy calls |
-
-**[Become a Sponsor →](#)** (GitHub Sponsors link)
+**[Become a Sponsor →](https://github.com/sponsors/402kit)**
 
 ### Current Sponsors
 
@@ -180,49 +194,9 @@ _Be the first to sponsor 402Kit!_
 
 ---
 
-## 🏢 Enterprise
-
-Need custom features, support, or consulting? Check out [MONETIZATION.md](./MONETIZATION.md) for:
-
-- 🔥 Hosted facilitator service (turnkey payment infrastructure)
-- ⚡ Premium adapters for production
-- 🎯 Enterprise support contracts
-- 🛠️ Custom development and consulting
-
-**[Contact us for enterprise →](#)** enterprise@402kit.dev
-
----
-
 ## Governance
 
 See [docs/GOVERNANCE.md](docs/GOVERNANCE.md) for project governance model.
-
-## Security
-
-**Report vulnerabilities to**: security@402kit.dev
-
-- ✅ **Anti-replay protection**: Single-use challenges with nonce tracking
-- ✅ **Binding validation**: Payments bound to host/method/path
-- ✅ **TTL enforcement**: Short-lived challenges (default 60s)
-- ✅ **TLS required**: Always use HTTPS in production
-- ✅ **Dependabot enabled**: Weekly automated security updates
-- ✅ **Vulnerability scanning**: Continuous CI/CD monitoring with `pnpm audit`
-- ✅ **Security headers**: Next.js demo includes CSP, X-Frame-Options, and CORP/COOP
-
-### Security Best Practices
-
-1. **Always use HTTPS** - Never send payment headers over unencrypted connections
-2. **Validate header sizes** - Implement request size limits to prevent DoS attacks
-3. **Monitor dependencies** - Automated updates via Dependabot catch known CVEs early
-4. **Review audit logs** - Check `pnpm audit` output regularly for zero-day disclosures
-5. **Use environment variables** - Never commit secrets (see `.env.example`)
-
-See [SECURITY.md](./SECURITY.md) for:
-
-- Threat model and attack surface analysis
-- Full security policy and reporting procedures
-- Supported versions and update cadence
-- Incident response process
 
 ## License
 
@@ -231,12 +205,6 @@ Apache-2.0 © 2025 402Kit Authors
 This project includes explicit **patent grants** under Apache License 2.0, protecting both contributors and users.
 
 See [LICENSE](./LICENSE) and [NOTICE](./NOTICE) for details.
-
-## Contributing
-
-We welcome contributions! **All PRs require signing our CLA** ([CLA.md](./CLA.md)).
-
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
 ## Trademark
 

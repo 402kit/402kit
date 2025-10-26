@@ -1,155 +1,61 @@
 # Project Structure
 
+This document outlines the structure of the 402Kit monorepo.
+
 ```
 /402kit
-├── .changeset/              # Changesets for version management
-├── .github/
-│   ├── ISSUE_TEMPLATE/      # Bug, feature, question templates
-│   ├── workflows/           # CI/CD workflows
-│   ├── CODEOWNERS           # Code ownership
-│   ├── FUNDING.yml          # Funding info
-│   └── PULL_REQUEST_TEMPLATE.md
+├── .github/                 # GitHub-specific files (workflows, templates)
+├── assets/                  # Static assets
 ├── conformance/             # x402 conformance test suite
-│   ├── scenarios/           # Test scenarios
-│   └── package.json
 ├── docs/                    # Documentation
-│   ├── GETTING_STARTED.md
-│   ├── ARCHITECTURE.md
-│   └── X402_SPEC.md
 ├── examples/                # Example applications
-│   ├── express/             # Express.js server
-│   ├── next/                # Next.js App Router
-│   └── browser/             # Browser client
 ├── packages/                # Monorepo packages
-│   ├── core/                # @402kit/core
-│   │   ├── src/
-│   │   │   ├── types.ts
-│   │   │   ├── validation.ts
-│   │   │   ├── codec.ts
-│   │   │   ├── canonical.ts
-│   │   │   ├── anti-replay.ts
-│   │   │   └── index.ts
-│   │   ├── package.json
-│   │   └── tsconfig.json
-│   ├── client/              # @402kit/client
-│   │   ├── src/
-│   │   │   └── index.ts
-│   │   ├── package.json
-│   │   └── tsconfig.json
-│   ├── server/              # @402kit/server
-│   │   ├── src/
-│   │   │   ├── index.ts
-│   │   │   ├── express.ts
-│   │   │   ├── next.ts
-│   │   │   └── hono.ts
-│   │   ├── package.json
-│   │   └── tsconfig.json
-│   ├── entitlement/         # @402kit/entitlement
-│   │   ├── src/
-│   │   │   └── index.ts
-│   │   ├── package.json
-│   │   └── tsconfig.json
-│   ├── adapter-mock/        # @402kit/adapter-mock
-│   │   ├── src/
-│   │   │   └── index.ts
-│   │   ├── package.json
-│   │   └── tsconfig.json
-│   └── adapter-x402/        # @402kit/adapter-x402
-│       ├── src/
-│       │   └── index.ts
-│       ├── package.json
-│       └── tsconfig.json
-├── RFCs/                    # Request for Comments
-│   └── README.md
 ├── CHANGELOG.md             # Project changelog
 ├── CLA.md                   # Contributor License Agreement
-├── CODE_OF_CONDUCT.md       # Community code of conduct
-├── CODE_OF_PRACTICE.md      # Development practices
+├── CODEOWNERS               # Code ownership
 ├── CONTRIBUTING.md          # Contribution guidelines
-├── GOVERNANCE.md            # Project governance model
 ├── LICENSE                  # Apache-2.0 License
-├── MAINTAINERS.md           # Maintainer list
+├── NOTICE                   # Notice file for dependencies
 ├── README.md                # Project overview
-├── RELEASE.md               # Release process
-├── ROADMAP.md               # Project roadmap
 ├── SECURITY.md              # Security policy
-├── SECURITY_CONTACTS        # Security contact info
-├── SUPPORT.md               # Support options
 ├── TRADEMARKS.md            # Trademark policy
 ├── package.json             # Root package.json
+├── pnpm-lock.yaml           # pnpm lockfile
 ├── pnpm-workspace.yaml      # pnpm workspace config
 ├── tsconfig.base.json       # Base TypeScript config
-├── vitest.config.ts         # Vitest config
-├── .eslintrc.json           # ESLint config
-├── .prettierrc.json         # Prettier config
-└── .gitignore               # Git ignore rules
+└── vitest.config.ts         # Vitest config
 ```
 
 ## Key Directories
 
 ### `/packages`
 
-Monorepo packages using pnpm workspaces. Each package is independently publishable to NPM.
+Monorepo packages using pnpm workspaces. Each package is independently publishable to npm.
+
+- **`core`**: Core types, schemas, codecs, and validation logic.
+- **`client`**: HTTP client with automatic 402 handling.
+- **`server`**: Server middleware for Express, Next.js, and Hono.
+- **`entitlement`**: Optional session and entitlement helpers.
+- **`adapter-mock`**: Mock adapter for testing.
+- **`adapter-x402`**: Adapter for integrating with an x402 facilitator.
 
 ### `/examples`
 
-Full working examples demonstrating 402Kit usage in different environments.
+Full working examples demonstrating 402Kit usage in different environments (Next.js, Express, etc.).
 
 ### `/conformance`
 
-Test suite validating x402 protocol compliance and interoperability.
+A test suite for validating x402 protocol compliance and ensuring interoperability.
 
 ### `/docs`
 
-Additional documentation beyond README.
-
-### `/.github`
-
-GitHub-specific files: issue templates, PR templates, workflows, governance.
-
-### `/RFCs`
-
-Proposals for significant changes to protocol or APIs.
-
-## Package Dependencies
-
-```
-@402kit/client
-  └─ @402kit/core
-
-@402kit/server
-  ├─ @402kit/core
-  └─ @402kit/entitlement
-
-@402kit/entitlement
-  └─ @402kit/core
-
-@402kit/adapter-mock
-  └─ @402kit/core
-
-@402kit/adapter-x402
-  └─ @402kit/core
-```
-
-## Build Outputs
-
-```
-packages/*/dist/
-  ├── index.js           # CommonJS
-  ├── index.mjs          # ESM
-  ├── index.d.ts         # TypeScript declarations
-  └── *.map              # Source maps
-```
+Project documentation, including architecture, specifications, and guides.
 
 ## Development Workflow
 
-1. Edit files in `packages/*/src/`
-2. Run `pnpm build` to compile TypeScript
-3. Run `pnpm test` to test
-4. Run `pnpm lint` to check style
-5. Create changeset with `pnpm changeset`
-6. Submit PR
+1.  Edit files in `packages/*/src/`.
+2.  Run `pnpm build` to compile TypeScript.
+3.  Run `pnpm test` to run tests.
+4.  Submit a Pull Request with your changes.
 
-## Questions?
-
-See [CONTRIBUTING.md](../CONTRIBUTING.md) for development setup.
+See [CONTRIBUTING.md](../CONTRIBUTING.md) for more details on the development setup.

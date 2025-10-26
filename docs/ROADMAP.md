@@ -13,12 +13,12 @@ Make HTTP 402 "Payment Required" practical, secure, and interoperable across the
 
 ---
 
-## Q1 2025 (v0.2.x)
+## Q1 2026 (v0.2.x)
 
 ### Protocol
 
 - [ ] Finalize x402.v1 specification alignment
-- [ ] Add support for additional networks (Polygon, Optimism)
+- [ ] Add support for additional networks (e.g., Polygon, Optimism)
 - [ ] Lightning Network adapter (experimental)
 
 ### SDK
@@ -26,13 +26,12 @@ Make HTTP 402 "Payment Required" practical, secure, and interoperable across the
 - [ ] Improve error messages and debugging
 - [ ] Add telemetry/analytics hooks
 - [ ] Performance optimizations
-- [ ] Distributed replay store (Redis adapter)
+- [ ] Distributed replay store (e.g., Redis adapter)
 
 ### DX
 
 - [ ] CLI tool for testing and debugging
-- [ ] Interactive playground/demo
-- [ ] More examples (Remix, SvelteKit, Astro)
+- [ ] More examples (e.g., Remix, SvelteKit, Astro)
 
 ### Docs
 
@@ -42,13 +41,13 @@ Make HTTP 402 "Payment Required" practical, secure, and interoperable across the
 
 ---
 
-## Q2 2025 (v0.3.x)
+## Q2 2026 (v0.3.x)
 
 ### Protocol
 
 - [ ] "upto" scheme implementation (metering)
 - [ ] Batch payments support
-- [ ] Streaming payment protocol (WebSocket/SSE)
+- [ ] Streaming payment protocol (e.g., via WebSocket/SSE)
 
 ### SDK
 
@@ -61,11 +60,10 @@ Make HTTP 402 "Payment Required" practical, secure, and interoperable across the
 
 - [ ] Hosted facilitator service (alpha)
 - [ ] Dashboard for payment analytics
-- [ ] Developer portal
 
 ---
 
-## Q3 2025 (v0.4.x)
+## Q3 2026 (v0.4.x)
 
 ### Protocol
 
@@ -76,7 +74,7 @@ Make HTTP 402 "Payment Required" practical, secure, and interoperable across the
 ### SDK
 
 - [ ] Browser extension for auto-payment
-- [ ] Mobile SDK (React Native)
+- [ ] Mobile SDK (e.g., React Native)
 - [ ] GraphQL support
 
 ### Enterprise
@@ -84,11 +82,10 @@ Make HTTP 402 "Payment Required" practical, secure, and interoperable across the
 - [ ] Multi-tenancy support
 - [ ] Advanced entitlement policies
 - [ ] Audit logging
-- [ ] Compliance tools (GDPR, PCI)
 
 ---
 
-## Q4 2025 (v1.0.0)
+## Q4 2026 (v1.0.0)
 
 ### Release
 
@@ -106,19 +103,9 @@ Make HTTP 402 "Payment Required" practical, secure, and interoperable across the
 
 ---
 
-## Future (v2.0+)
-
-- Decentralized facilitator network
-- Smart contract integration
-- Cross-chain payments
-- AI-powered fraud detection
-- Global payment routing
-
----
-
 ## How to Contribute
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to help with these goals.
+See [CONTRIBUTING.md](../CONTRIBUTING.md) for how to help with these goals.
 
 ## Priorities
 
