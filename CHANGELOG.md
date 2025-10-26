@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Security
+
+- **Supply-chain guardrails:**
+  - Split Dependabot into separate production (lockfile-only patches) and dev (minor/patch grouped) update strategies
+  - Added Dependency Review workflow (fails PR on HIGH+ severity vulnerabilities)
+  - Extended CODEOWNERS to require security team review for dependency/CI file changes
+- Added Dependabot configuration for automated dependency updates (weekly npm + GitHub Actions)
+- Added security headers to Next.js demo (CSP, X-Frame-Options, X-Content-Type-Options, CORP, COOP, Referrer-Policy, Permissions-Policy)
+- Added edge middleware to block WordPress probe requests (`/wp-admin`, `/wp-login.php`, etc.)
+- Added `.env.example` template with security warnings for environment variable handling
+- Expanded security documentation in README.md with best practices and threat model reference
+- Updated vuln-scan CI workflow documentation to clarify `continue-on-error` acceptance criteria
+
 ### Added
 
 - Initial release of 402Kit

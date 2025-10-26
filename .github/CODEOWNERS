@@ -1,7 +1,26 @@
+# Default owner
+
 - @founder-username
-  /packages/core/ @founder-username
-  /packages/client/ @founder-username
-  /packages/server/ @founder-username
-  /.github/ @founder-username
-  /GOVERNANCE.md @founder-username
-  /SECURITY.md @founder-username
+
+# Core packages
+
+/packages/core/ @founder-username
+/packages/client/ @founder-username
+/packages/server/ @founder-username
+
+# Governance & security
+
+/.github/ @founder-username
+/GOVERNANCE.md @founder-username
+/SECURITY.md @founder-username
+
+# Security-sensitive config: require security team review for dependency/CI changes
+
+.github/** @402kit/security
+package-lock.json @402kit/security
+pnpm-lock.yaml @402kit/security
+yarn.lock @402kit/security
+**/package.json @402kit/security
+**/package-lock.json @402kit/security
+**/pnpm-lock.yaml @402kit/security
+\*\*/yarn.lock @402kit/security

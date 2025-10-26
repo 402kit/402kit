@@ -205,8 +205,24 @@ See [docs/GOVERNANCE.md](docs/GOVERNANCE.md) for project governance model.
 - ✅ **Binding validation**: Payments bound to host/method/path
 - ✅ **TTL enforcement**: Short-lived challenges (default 60s)
 - ✅ **TLS required**: Always use HTTPS in production
+- ✅ **Dependabot enabled**: Weekly automated security updates
+- ✅ **Vulnerability scanning**: Continuous CI/CD monitoring with `pnpm audit`
+- ✅ **Security headers**: Next.js demo includes CSP, X-Frame-Options, and CORP/COOP
 
-See [SECURITY.md](./SECURITY.md) for full security policy and reporting procedures.
+### Security Best Practices
+
+1. **Always use HTTPS** - Never send payment headers over unencrypted connections
+2. **Validate header sizes** - Implement request size limits to prevent DoS attacks
+3. **Monitor dependencies** - Automated updates via Dependabot catch known CVEs early
+4. **Review audit logs** - Check `pnpm audit` output regularly for zero-day disclosures
+5. **Use environment variables** - Never commit secrets (see `.env.example`)
+
+See [SECURITY.md](./SECURITY.md) for:
+
+- Threat model and attack surface analysis
+- Full security policy and reporting procedures
+- Supported versions and update cadence
+- Incident response process
 
 ## License
 
