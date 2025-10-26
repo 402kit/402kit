@@ -22,6 +22,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Docs**: Corrected relative links in `GETTING_STARTED.md` and other documents.
 - **Docs**: Standardized the use of contact emails and project naming.
 
+### Security
+
+- **Core**: Replaced `Math.random()` with Web Crypto API (`crypto.getRandomValues()`) in `generateNonce()` and `generateUUID()` for cryptographically secure nonce and challenge ID generation. Nonces now use base64url encoding (128 bits). UUIDs follow RFC 4122 v4 format.
+- **Server**: Added strict header validation before decoding X-PAYMENT headers. Enforces 4096-byte maximum size, rejects CRLF injection attempts, and prevents empty headers. Error messages sanitized to prevent information disclosure.
+
 ## [0.1.0] - 2025-10-19
 
 ### Added

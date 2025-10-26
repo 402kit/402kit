@@ -33,6 +33,7 @@ const config = {
 - x402 facilitator integration
 - Express/Next.js/Hono/edge runtime support
 - 402kit adapter ecosystem
+- **Strict header validation** (4096-byte limit, CRLF injection protection)
 
 ## License
 

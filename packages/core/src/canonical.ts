@@ -83,23 +83,54 @@ export async function hashBody(body: string | ArrayBuffer): Promise<string> {
 }
 
 /**
- * Generate random nonce (128-bit hex)
+ * Generate cryptographically secure random nonce (128-bit, base64url-encoded)
+ * Uses Web Crypto API (browser/edge) or Node.js crypto module
  */
 export function generateNonce(): string {
-  return Array.from({ length: 16 }, () =>
-    Math.floor(Math.random() * 256)
-      .toString(16)
-      .padStart(2, '0')
-  ).join('');
+  const bytes = new Uint8Array(16); // 128 bits
+
+  if (typeof crypto !== 'undefined' && crypto.getRandomValues) {
+    // Web Crypto API (browser/edge/modern Node)
+    crypto.getRandomValues(bytes);
+  } else {
+    // Fallback for older Node.js (should not happen in modern environments)
+    // This branch is only for extreme edge cases
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const nodeCrypto = require('crypto');
+    nodeCrypto.randomFillSync(bytes);
+  }
+
+  // Convert to base64url (URL-safe, no padding)
+  return btoa(String.fromCharCode(...bytes))
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=/g, '');
 }
 
 /**
- * Generate UUID v4
+ * Generate cryptographically secure UUID v4
+ * Uses Web Crypto API (browser/edge) or Node.js crypto module
  */
 export function generateUUID(): string {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-    const r = (Math.random() * 16) | 0;
-    const v = c === 'x' ? r : (r & 0x3) | 0x8;
-    return v.toString(16);
-  });
+  const bytes = new Uint8Array(16);
+
+  if (typeof crypto !== 'undefined' && crypto.getRandomValues) {
+    // Web Crypto API (browser/edge/modern Node)
+    crypto.getRandomValues(bytes);
+  } else {
+    // Fallback for older Node.js
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const nodeCrypto = require('crypto');
+    nodeCrypto.randomFillSync(bytes);
+  }
+
+  // Set version (4) and variant bits per RFC 4122
+  bytes[6]! = (bytes[6]! & 0x0f) | 0x40; // Version 4
+  bytes[8]! = (bytes[8]! & 0x3f) | 0x80; // Variant 10
+
+  // Format as UUID string
+  const hex = Array.from(bytes, (b) => b.toString(16).padStart(2, '0')).join(
+    ''
+  );
+  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
 }

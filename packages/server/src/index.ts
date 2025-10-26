@@ -16,6 +16,36 @@ import {
 import { CookieEntitlement, BearerEntitlement } from '@402kit/entitlement';
 
 /**
+ * Security constants for header validation
+ */
+const MAX_HEADER_SIZE = 4096; // bytes
+
+/**
+ * Validate header for security issues
+ * Returns error message if invalid, null if valid
+ */
+function validateHeaderSecurity(headerValue: string): string | null {
+  // Check size limit (prevent DoS)
+  if (headerValue.length > MAX_HEADER_SIZE) {
+    return 'Header too large';
+  }
+
+  // Check for CRLF injection attempts
+  if (headerValue.includes('\r') || headerValue.includes('\n')) {
+    return 'Invalid header format';
+  }
+
+  // Validate base64url charset (decoded header should only contain safe chars after decode)
+  // This is a conservative check - the actual base64url string is checked during decode
+  const trimmed = headerValue.trim();
+  if (!trimmed || trimmed.length === 0) {
+    return 'Empty header';
+  }
+
+  return null;
+}
+
+/**
  * Payment adapter interface
  */
 export interface PaymentAdapter {
@@ -120,6 +150,16 @@ export async function handle402(
     return await send402Challenge(request, config);
   }
 
+  // Validate header security first (before decoding)
+  const securityError = validateHeaderSecurity(paymentHeader);
+  if (securityError) {
+    return sendError(
+      400,
+      PaymentErrorCode.INVALID_SCHEMA,
+      'Invalid payment header'
+    );
+  }
+
   // Verify payment
   try {
     const header = decodePaymentHeader(paymentHeader);
@@ -128,7 +168,7 @@ export async function handle402(
       return sendError(
         400,
         PaymentErrorCode.INVALID_SCHEMA,
-        'Invalid payment header schema'
+        'Invalid payment header'
       );
     }
 
@@ -203,11 +243,8 @@ export async function handle402(
               ? PaymentErrorCode.MISMATCH
               : PaymentErrorCode.VERIFICATION_FAILED;
 
-      return sendError(
-        402,
-        errorCode,
-        `Payment verification failed: ${result.reason}`
-      );
+      // Generic message (don't leak verification details)
+      return sendError(402, errorCode, 'Payment verification failed');
     }
 
     // Mark as used
@@ -248,10 +285,11 @@ export async function handle402(
     // Return success indicator (actual handler will be called)
     return new Response(null, { status: 200, headers });
   } catch (error) {
+    // Generic error message (don't leak implementation details)
     return sendError(
       400,
       PaymentErrorCode.INVALID_SCHEMA,
-      `Payment processing failed: ${error}`
+      'Payment processing failed'
     );
   }
 }

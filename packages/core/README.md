@@ -15,6 +15,7 @@ npm install @402kit/core
 - TypeScript types and Zod validation schemas
 - 402kit ecosystem foundation
 - Zero runtime dependencies
+- **Cryptographically secure nonce and UUID generation** using Web Crypto API
 
 ## Quick Start
 
