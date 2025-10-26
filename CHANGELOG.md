@@ -9,9 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
-- **Supply-chain guardrails:**
-  - Split Dependabot into separate production (lockfile-only patches) and dev (minor/patch grouped) update strategies
-  - Added Dependency Review workflow (fails PR on HIGH+ severity vulnerabilities)
+- **Supply-chain guardrails (v2):**
+  - Dependabot: Grouped updates with lockfile-only strategy (prod patches, dev minor+patch) - single entry due to Dependabot directory constraint
+  - Dependency Review: Added PR comment summaries for visibility
+  - Release workflow: Added pnpm cache, npm provenance attestations, repo guard, and concurrency control
   - Extended CODEOWNERS to require security team review for dependency/CI file changes
 - Added Dependabot configuration for automated dependency updates (weekly npm + GitHub Actions)
 - Added security headers to Next.js demo (CSP, X-Frame-Options, X-Content-Type-Options, CORP, COOP, Referrer-Policy, Permissions-Policy)

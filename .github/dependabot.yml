@@ -1,6 +1,8 @@
 version: 2
 updates:
-  # npm: split prod (lockfile-only patches) vs dev (minor+patch grouped)
+  # npm: grouped updates with lockfile-only strategy
+  # Trade-off: Single entry required (Dependabot doesn't allow duplicate package-ecosystem+directory)
+  # Production gets patch-only; dev gets minor+patch (both groups use lockfile-only to prevent package.json churn)
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
