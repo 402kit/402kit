@@ -37,7 +37,7 @@ jobs:
     continue-on-error: true # Known dev-dep vulnerabilities (esbuild, hono) accepted for now
     steps:
       - uses: actions/checkout@v5
-      - uses: google/osv-scanner/actions/scanner@v2.2.3
+      - uses: google/osv-scanner/actions/scanner@v2.2.4
         with:
           scan-args: '--lockfile=pnpm-lock.yaml'
 
